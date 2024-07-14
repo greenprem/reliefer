@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: 'yota';
+    src: url('/fonts/Essays1743.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  body {
+    font-family: 'yota';
+    background-image: url('/images/oldbook.jpg');
+    background-size: cover; /* Ensures the image covers the whole screen */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Centers the image */
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5); /* Blurry shadow effect */
+
+  }
+  .element::-webkit-scrollbar {
+    display: none;
+  }
+  
