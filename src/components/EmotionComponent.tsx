@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import 'tailwindcss/tailwind.css'; // Ensure you import Tailwind CSS
+import '../styles/globals.css'; // Ensure you import the global CSS
 import { TypeAnimation } from 'react-type-animation';
 
 type Emotion = {
@@ -59,8 +60,13 @@ const EmotionSelector = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-white">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-[#663300]">How are you feeling?</h1>
+    <div className="min-h-screen flex flex-col items-center justify-center text-white relative">
+      {/* Header Section */}
+      <header className="absolute top-0 left-0 p-4">
+        <h2 className="text-xl font-bold text-black">Live the Verse</h2>
+      </header>
+
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-black">How are you feeling?</h1>
       {/* Hide emotion buttons on smaller screens if an emotion is selected */}
       <div className={`${selectedEmotion ? 'hidden sm:grid' : 'grid'} grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-8`}>
         {emotions.map((emotion) => (
@@ -77,15 +83,9 @@ const EmotionSelector = () => {
       {loading && <p className="text-2xl text-black">Loading...</p>}
       {error && <p className="text-2xl text-red-500">{error}</p>}
       {selectedEmotion && !loading && !error && (
-        <div className="relative">
-          {/* Conditional image source based on screen size */}
-          <img
-            src={window.innerWidth <= 640 ? '/images/page1.png' : '/images/page.png'}
-            alt="Page Image"
-            className="w-full h-auto rounded-lg shadow-lg transition transform hover:scale-105"
-          />
-          <div className="absolute inset-0 flex items-center justify-center bg-opacity-75 text-black p-6 rounded-lg">
-            <div className="text-center max-h-full overflow-y-auto pl-20 pr-20 sm:pl-10 sm:pr-10 md:pl-20 md:pr-20">
+        <div className="relative slide-up mt-10 w-full max-w-2xl mx-auto">
+          <div className="flex items-center justify-center bg-opacity-75 text-black p-6 rounded-lg shadow-lg">
+            <div className="text-center max-h-full overflow-y-auto pl-10 pr-10">
               {verses.map((verse, index) => (
                 <p key={index} className="text-xl sm:text-2xl md:text-3xl mb-2">
                   <TypeAnimation
